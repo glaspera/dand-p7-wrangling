@@ -11775,7 +11775,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Wrangle-Report-(for-internal-use-only)">Wrangle Report (for internal use only)<a class="anchor-link" href="#Wrangle-Report-(for-internal-use-only)">&#182;</a></h1>
+<h1 id="Wrangle-Report-(for-internal-use-only)">Wrangle Report (for internal use only)<a class="anchor-link" href="#Wrangle-Report-(for-internal-use-only)">&#182;</a></h1><p>Created by: Alan Glasper, March 10th, 2019</p>
+
 </div>
 </div>
 </div>
@@ -11844,9 +11845,9 @@ div#notebook {
 <li>There are images that are not of dogs.</li>
 <li>Some entries do not have an image.</li>
 <li>Some entries are retweets or replies.</li>
-<li>Some column names are short but not really descriptive.</li>
-<li>Make some column headings more clear.</li>
+<li>Some column names are short but not descriptive.</li>
 <li><code>expanded_urls</code> has replicated urls and some missing.</li>
+<li><code>source</code> column is not consistent with the rest of the table.</li>
 </ul>
 <h5 id="ip"><code>ip</code><a class="anchor-link" href="#ip">&#182;</a></h5><ul>
 <li>There is a lot of mixed case and underscores in the breed names.</li>
@@ -11855,12 +11856,12 @@ div#notebook {
 <li>There are images that are not of dogs.</li>
 </ul>
 <h5 id="tw"><code>tw</code><a class="anchor-link" href="#tw">&#182;</a></h5><ul>
-<li>The column <code>id</code> would be better named <code>tweet_id</code>.</li>
+<li><code>id</code> would be better named <code>tweet_id</code>.</li>
 <li>There are entries without media file information.</li>
 <li>There are entries that are retweets, quote tweets and replies.</li>
+<li><code>extended_entities</code> is JSON strings, better as extracted columns.</li>
 </ul>
 <h4 id="Tidiness">Tidiness<a class="anchor-link" href="#Tidiness">&#182;</a></h4><h5 id="ea"><code>ea</code><a class="anchor-link" href="#ea">&#182;</a></h5><ul>
-<li><code>source</code> column in <code>ea</code> is not consistent with the rest of the table.</li>
 <li>The columns <code>doggo</code>, <code>floofer</code>, <code>pupper</code>, <code>puppo</code> would be better as a single column with quasi-ordered categories. Entries listed for more than one dog type can be categorized <code>Multiple</code>.</li>
 </ul>
 <h5 id="General-tidying">General tidying<a class="anchor-link" href="#General-tidying">&#182;</a></h5><ul>
@@ -11875,7 +11876,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Cleaning-(Stage-4)">Cleaning (Stage 4)<a class="anchor-link" href="#Cleaning-(Stage-4)">&#182;</a></h2><p>The dataframes prepared (<code>ea_clean</code>, <code>ip_clean</code>, <code>tw_clean</code>) were cleaned using Define, Code and Test steps.</p>
+<h2 id="Cleaning-(Stage-4)">Cleaning (Stage 4)<a class="anchor-link" href="#Cleaning-(Stage-4)">&#182;</a></h2><p>The DataFrames prepared (<code>ea_clean</code>, <code>ip_clean</code>, <code>tw_clean</code>) were cleaned using Define, Code and Test steps, then merged into a single table using inner joins.</p>
 
 </div>
 </div>
@@ -11885,12 +11886,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Storing-(Stage-5)">Storing (Stage 5)<a class="anchor-link" href="#Storing-(Stage-5)">&#182;</a></h2><p>For storage of the cleaned DataFrames, it was decided to merge the enhanced archive and the new data from the online twitter archive, according to the principles of tidy data, but to save the image predictions DataFrame as a separate file. The twitter data could be used for several further activities, including new predictions using new and improved algorithms. 
-Therefore two files are delivered:</p>
-<ul>
-<li>twitter_archive_master.csv</li>
-<li>image_predictions_version_1.csv</li>
-</ul>
+<h2 id="Storing-(Stage-5)">Storing (Stage 5)<a class="anchor-link" href="#Storing-(Stage-5)">&#182;</a></h2><p>The final table was stored as: <code>twitter_archive_master.csv</code>.</p>
 <hr>
 <h2 id="Reflection">Reflection<a class="anchor-link" href="#Reflection">&#182;</a></h2><p>The wrangling was thorough. Some good helper functions were written. Use of absolute row numbers was a bad idea: tweet ids would have been better.</p>
 
